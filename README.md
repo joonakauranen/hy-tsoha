@@ -1,4 +1,4 @@
-# hy-tsoha
+# hy-tsoha-keskustelusovellus
 
 ## Keskustelusovellus taloyhtiön asukkaille
 
