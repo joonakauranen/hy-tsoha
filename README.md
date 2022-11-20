@@ -16,7 +16,7 @@ Alustava ajatus on lähteä yllämainituista liikkeelle ja sitten laajentaa sove
 
 Sovelluksen pohja on toteutettu. Sovellukseen voi luoda käyttäjän joka on joko normaali käyttäjä tai admin. Sovellukseen voi kirjautua luodulla käyttäjällä ja salasanalla. Käyttäjä voi luoda uuden ketjun.
 
-Toiminnallisuutta täytyy vielä laajentaa. Ensimmäisten viikkojen aikana suuri osa ajasta kului SQL:n ja Flask-riippuvuuksien konfigurointiin. Nyt kun konfiguraatio on tehty riittävän onnistuneesti uskon, että sovellus etenee tulevilla viikoilla paremmin.
+Toiminnallisuutta täytyy vielä laajentaa. Ensimmäisten viikkojen aikana suuri osa ajasta kului SQL:n ja Flask-riippuvuuksien konfigurointiin (ja niiden toiminnan ymmärtämiseen). Nyt kun konfiguraatio on tehty riittävän onnistuneesti uskon, että sovellus etenee tulevilla viikoilla paremmin.
 
 Kurssimateriaalin mukaisesti lopulliseen applikaatioon on tarkoitus lisätä seuraavaa toiminnallisuutta:
 
