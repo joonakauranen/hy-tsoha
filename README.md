@@ -1,8 +1,8 @@
 # hy-tsoha-keskustelusovellus
 
-## Keskustelusovellus taloyhtiön asukkaille
+## Keskustelusovellus
 
-Ajatuksena on toteuttaa keskustelusovellus kuvitteellisen taloyhtiön asukkaille. Sovelluksen ominaisuudet tulevat koostumaan kurssimateriaalissa ehdotetusta toiminnallisuudesta siinä määrin kun se keretään kurssin aikana toteuttaa.
+Ajatuksena on toteuttaa keskustelusovellus. Sovelluksen ominaisuudet tulevat koostumaan kurssimateriaalissa ehdotetusta toiminnallisuudesta siinä määrin kun se keretään kurssin aikana toteuttaa.
 
 Keskeisinä toimintoina pidän ainakin seuraavia:
 
