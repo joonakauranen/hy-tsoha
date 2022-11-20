@@ -18,6 +18,14 @@ Sovelluksen pohja on toteutettu. Sovellukseen voi luoda käyttäjän joka on jok
 
 Toiminnallisuutta täytyy vielä laajentaa. Ensimmäisten viikkojen aikana suuri osa ajasta kului SQL:n ja Flask-riippuvuuksien konfigurointiin. Nyt kun konfiguraatio on tehty riittävän onnistuneesti uskon, että sovellus etenee tulevilla viikoilla paremmin.
 
+Kurssimateriaalin mukaisesti lopulliseen applikaatioon on tarkoitus lisätä seuraavaa toiminnallisuutta:
+
+- Käyttäjä voi kirjoittaa uuden viestin olemassa olevaan ketjuun.
+- Käyttäjä voi muokata luomansa ketjun otsikkoa sekä lähettämänsä viestin sisältöä. Käyttäjä voi myös poistaa ketjun tai viestin.
+- Käyttäjä voi etsiä kaikki viestit, joiden osana on annettu sana.
+- Ylläpitäjä voi lisätä ja poistaa keskustelualueita.
+- Ylläpitäjä voi luoda salaisen alueen ja määrittää, keillä käyttäjillä on pääsy alueelle.
+
 Puutteita on itse toiminnallisuuden lisäksi tietoturvassa, johon ei juuri ole vielä kiinnitetty erityistä huomiota. Tarkoitus on lisätä käyttöön ainakin CSRF-tokenit.
 
 fly.io ei ole käytettävissä, koska pankkitunnuksia vaadittiin. Ohjelmaa voi halutessaan testata kloonamalla sen GitHub-repositorion ja käyttämällä ohjelmaa paikallisesti.
