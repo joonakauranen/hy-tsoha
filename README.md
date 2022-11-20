@@ -25,15 +25,21 @@ fly.io ei ole käytettävissä, koska pankkitunnuksia vaadittiin. Ohjelmaa voi h
 Seuraavalla tavalla voidaan asentaa venv, flask ja tarvittavat riippuvuudet. Kommennot tulee suorittaa kansiossa, johon projekti kloonattiin:
 
 python3 -m venv venv
+
 source venv/bin/activate
+
 pip install flask
+
 pip install flask-sqlalchemy
+
 pip install psycopg2
+
 pip install python-dotenv
 
 Applikaation käyttöön (projektin juureen) tulee konfiguroida .env-tiedosto, joka sisältää kurssimateriaalin kaltaisesti seuraavat tiedot:
 
 DATABASE_URL=postgresql+psycopg2::///***insert username here***
+
 SECRET_KEY=***insert secretkey here***
 
 Olettaen, että postgre on asennettu kurssimateriaalin mukaan voidaan tietokanta käynnistää ajamalla:
@@ -43,4 +49,5 @@ start-pg.sh
 Otetaan oikea schema käyttöön ja käynnistetään pplikaatio paikallisesti ajamaalla projektin kansiossa:
 
 psql < schema.sql
+
 flask run
