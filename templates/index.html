@@ -1,6 +1,10 @@
 {% if session.user_name %}
 <p>Olet kirjautunut nimellä {{ session.user_name }}</p>
 <p>Rooli (1 = Käyttäjä, 2 = Admin) {{ session.user_role }}</p>
+<hr />
+{% for t in topics %} Aihe: {{ t.topic }} <br />
+Luotu: {{ t.created_at.strftime("%Y-%m-%d %H:%M:%S") }} <br />
+{% endfor %}
 <a href="/logout">Kirjaudu ulos</a>
 <a href="/new">Uusi keskustelu</a>
 {% else %}

@@ -7,7 +7,10 @@ import messages
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    sql = "SELECT id, topic, created_at FROM topics ORDER BY id DESC"
+    result = db.session.execute(sql)
+    topics = result.fetchall()
+    return render_template("index.html", topics = topics)
 
 @app.route("/new")
 def create_topic():
