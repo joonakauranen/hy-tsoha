@@ -46,7 +46,7 @@ Olettaen, että postgre on asennettu kurssimateriaalin mukaan voidaan tietokanta
 
 ```start-pg.sh```
 
-Otetaan oikea schema käyttöön ja käynnistetään pplikaatio paikallisesti ajamaalla projektin kansiossa:
+Otetaan oikea schema käyttöön ja käynnistetään applikaatio paikallisesti ajamaalla projektin kansiossa:
 
 ```psql < schema.sql```
 
