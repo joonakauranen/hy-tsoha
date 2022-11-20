@@ -2,10 +2,10 @@
 <p>Olet kirjautunut nimellä {{ session.user_name }}</p>
 <p>Rooli (1 = Käyttäjä, 2 = Admin) {{ session.user_role }}</p>
 <a href="/logout">Kirjaudu ulos</a>
-<a href="/create_topic">Uusi keskustelu</a>
+<a href="/new">Uusi keskustelu</a>
 {% else %}
 <a href="/login">Kirjaudu sisään</a>
-Jos sinulla ei ole tunnusta, voit luoda uuden tunnuksen
+Luo uusi tunnus
 <a href="/register">tästä</a>
 
 {% endif %}
