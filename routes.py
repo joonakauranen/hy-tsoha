@@ -69,8 +69,22 @@ def register():
         db.session.commit()
         return redirect("/")
 
+@app.route("/new_message/<string:area_content>/<string:time>")
+def new_message(area_content,time):
+    user = user_id()
+    admin = user_role(session.get("user_role", 0))
+    return render_template("new_message.html", area_content=area_content, time=time, user_name=user_name, is_admin=admin)
+
 def user_id():
     return session.get("user_id", 0)
+
+def user_name():
+    return session.get("user_name", 0)
+
+def user_role(role):
+    if role > 0:
+        return True
+    return False
 
 def require_role(role):
     if role > session.get("user_role", 0):

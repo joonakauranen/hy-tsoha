@@ -11,3 +11,4 @@ CREATE TABLE users (
     password TEXT,
     role TEXT
 );
+
