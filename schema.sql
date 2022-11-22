@@ -2,6 +2,7 @@ CREATE TABLE topics (
     id SERIAL PRIMARY KEY,
     topic TEXT,
     created_at TIMESTAMP,
+    created_by INTEGER REFERENCES users,
     user_id INTEGER
 );
 
@@ -16,6 +17,7 @@ CREATE TABLE messages (
     id SERIAL PRIMARY KEY,
     content TEXT,
     created_at TIMESTAMP,
-    created_by TEXT
+    created_by INTEGER REFERENCES users,
+    topic_id INTEGER REFERENCES topics
 );
 

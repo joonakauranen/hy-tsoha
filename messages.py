@@ -1,9 +1,17 @@
 from db import db
 
-def create_topic(content, user):
+def add_topic(content, user):
+    if len(content) == 0:
+        return False
+    sql = "INSERT INTO topics (topic, created_by, created_at) VALUES (:topic, :created_by, NOW())"
+    db.session.execute(sql, {"topic":content, "created_by":user})
+    db.session.commit()
+    return True
+
+def new_message(content, user):
     if not content or user:
         return False
-    sql = "INSERT INTO topics (topic, user_id, created_at) VALUES (:topic, :user_id, NOW())"
-    db.session.execute(sql, {"topic":content, "user_id":user})
+    sql = "INSERT INTO messages (content, created_by, created_at) VALUES (:content, :user_id, NOW())"
+    db.session.execute(sql, {"content":content, "created_by":user})
     db.session.commit()
     return True

@@ -4,6 +4,7 @@
 <hr />
 {% for t in topics %} Aihe: {{ t.topic }} <br />
 Luotu: {{ t.created_at.strftime("%Y-%m-%d %H:%M:%S") }} <br />
+Alueen Id: {{ t.id }} <br />
 {% endfor %}
 <a href="/logout">Kirjaudu ulos</a>
 <a href="/new">Uusi keskustelu</a>
