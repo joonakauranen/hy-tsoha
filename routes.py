@@ -20,10 +20,10 @@ def create_topic():
 def send():
     content = request.form["content"]
     user = user_id()
-    if messages.send(content, user):
+    if messages.create_topic(content, user):
         return redirect("/")
     else:
-        return render_template("error.html", message="Viestin lähetys ei onnistunut")
+        return render_template("error.html", message="Aiheen luominen epäonnistui")
 
 @app.route("/login",methods=["GET", "POST"])
 def login():
@@ -69,11 +69,11 @@ def register():
         db.session.commit()
         return redirect("/")
 
-@app.route("/new_message/<string:area_content>/<string:time>")
-def new_message(area_content,time):
+@app.route("/new_message",methods="POST")
+def new_message(content,time):
     user = user_id()
     admin = user_role(session.get("user_role", 0))
-    return render_template("new_message.html", area_content=area_content, time=time, user_name=user_name, is_admin=admin)
+    return render_template("new_message.html", area_content=content, time=time, user_name=user_name)
 
 def user_id():
     return session.get("user_id", 0)

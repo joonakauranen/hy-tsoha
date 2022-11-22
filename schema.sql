@@ -12,3 +12,10 @@ CREATE TABLE users (
     role TEXT
 );
 
+CREATE TABLE messages (
+    id SERIAL PRIMARY KEY,
+    content TEXT,
+    created_at TIMESTAMP,
+    created_by TEXT
+);
+
