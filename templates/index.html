@@ -2,15 +2,17 @@
 <p>Olet kirjautunut nimellä {{ session.user_name }}</p>
 <p>Rooli (1 = Käyttäjä, 2 = Admin) {{ session.user_role }}</p>
 <hr />
-{% for t in topics %} Aihe: {{ t.topic }} <br />
-Luotu: {{ t.created_at.strftime("%Y-%m-%d %H:%M:%S") }} <br />
-Alueen Id: {{ t.id }} <br />
-{% endfor %}
-<a href="/logout">Kirjaudu ulos</a>
-<a href="/new">Uusi keskustelu</a>
-{% else %}
-<a href="/login">Kirjaudu sisään</a>
-Luo uusi tunnus
-<a href="/register">tästä</a>
+{% for t in topics %}
+<a href="/messages/{{ t.id }}">Aihe: {{ t.topic }}</a> <br />
+  Luotu: {{ t.created_at.strftime("%Y-%m-%d %H:%M:%S") }} <br />
+  Alueen Id: {{ t.id }} <br />
+  {% endfor %}
+  <a href="/logout">Kirjaudu ulos</a>
+  <a href="/new">Uusi keskustelu</a>
+  {% else %}
+  <a href="/login">Kirjaudu sisään</a>
+  Luo uusi tunnus
+  <a href="/register">tästä</a>
 
-{% endif %}
+  {% endif %}
+</a>

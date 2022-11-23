@@ -16,6 +16,15 @@ def index():
 def create_topic():
     return render_template("new.html")
 
+@app.route("/new_message/<string:topic_id>")
+def new_message(topic_id):
+    return render_template("new_message.html", topic_id = topic_id)
+
+@app.route("/messages/<string:id>")
+def mes(id):
+    topic_messages = messages.get_messages(id)
+    return render_template("messages.html", topic_messages=topic_messages, topic_id=id)
+
 @app.route("/create_topic", methods=["POST"])
 def create():
     content = request.form["content"]
@@ -23,7 +32,7 @@ def create():
     if messages.add_topic(content, user):
         return redirect("/")
     else:
-        return render_template("error.html", message="Aiheen luominen epäonnistui")
+        return render_template("error.html", message="Aiheen luominen epäonnistui. Varmista, että otsikko ei ole tyhjä")
 
 @app.route("/login",methods=["GET", "POST"])
 def login():
@@ -69,14 +78,14 @@ def register():
         db.session.commit()
         return redirect("/")
 
-@app.route("/new_message",methods=["POST"])
-def new_message():
+@app.route("/create_message/<string:topic_id>",methods=["POST"])
+def create_message(topic_id):
     content = request.form["content"]
     user = user_id()
-    if messages.new_message(content, user):
-        return render_template("topic_message.html")
+    if messages.new_message(content, user, topic_id):
+        return render_template("messages.html", topic_id=topic_id)
     else:
-        return render_template("error.html", message="Aiheen luominen epäonnistui")
+        return render_template("error.html", message="Viestin lähettäminen epäonnistui. Varmista, että viestikenttä ei ole tyhjä.")
     
 
 def user_id():
