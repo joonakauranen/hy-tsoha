@@ -82,10 +82,9 @@ def register():
 def create_message(topic_id):
     content = request.form["content"]
     user = user_id()
-    if messages.new_message(content, user, topic_id):
-        return render_template("messages.html", topic_id=topic_id)
-    else:
-        return render_template("error.html", message="Viestin lähettäminen epäonnistui. Varmista, että viestikenttä ei ole tyhjä.")
+    topic_messages = messages.new_message(content, user, topic_id)
+    return render_template("messages.html", topic_messages=topic_messages, topic_id = topic_id)
+
 
 @app.route("/search_messages", methods=["POST"])
 def search():
@@ -104,8 +103,8 @@ def new_favorite(topic_id, topic):
 @app.route("/create_favorite/<string:topic_id>/<string:topic>",methods=["POST"])
 def create_favorite(topic_id, topic):
     user = user_id()
-    messages.new_favorite(topic, user, topic_id)
-    return render_template("index.html", topic_id=topic_id)
+    if messages.new_favorite(topic, user, topic_id):
+        return redirect("/")
 
 def user_id():
     return session.get("user_id", 0)

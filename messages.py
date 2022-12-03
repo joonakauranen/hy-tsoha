@@ -14,7 +14,8 @@ def new_message(content, user, topic_id):
     sql = "INSERT INTO messages (content, created_by, created_at, topic_id) VALUES (:content, :created_by, NOW(), :topic_id)"
     db.session.execute(sql, {"content":content, "created_by":user, "topic_id":topic_id})
     db.session.commit()
-    return True
+    topics = get_messages(topic_id)
+    return topics
 
 def get_messages(top_id):
     sql = "SELECT id, content, created_at, topic_id FROM messages WHERE topic_id=:topic_id ORDER BY created_at DESC"
@@ -33,3 +34,9 @@ def new_favorite(content, juser, topic_id):
     db.session.execute(sql, {"content":content, "juser":juser, "topic_id":topic_id})
     db.session.commit()
     return True
+
+def get_favorites(juser):
+    sql = "SELECT id, content, juser FROM favorites WHERE juser=:juser"
+    result = db.session.execute(sql, {"juser":juser})
+    favorites = result.fetchall()
+    return favorites
