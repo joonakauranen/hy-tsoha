@@ -10,7 +10,9 @@ def index():
     sql = "SELECT id, topic, created_at FROM topics ORDER BY id DESC"
     result = db.session.execute(sql)
     topics = result.fetchall()
-    return render_template("index.html", topics = topics)
+    user = user_id()
+    favorites = messages.get_favorites(user)
+    return render_template("index.html", topics = topics, favorites = favorites)
 
 @app.route("/new_topic")
 def create_topic():

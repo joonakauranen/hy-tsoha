@@ -36,7 +36,7 @@ def new_favorite(content, juser, topic_id):
     return True
 
 def get_favorites(juser):
-    sql = "SELECT id, content, juser FROM favorites WHERE juser=:juser"
+    sql = "SELECT id, content, juser, topic_id FROM favorites WHERE juser=:juser"
     result = db.session.execute(sql, {"juser":juser})
     favorites = result.fetchall()
     return favorites

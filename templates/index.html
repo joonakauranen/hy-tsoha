@@ -2,6 +2,12 @@
 <p>Olet kirjautunut nimellä {{ session.user_name }}</p>
 <p>Rooli (1 = Käyttäjä, 2 = Admin) {{ session.user_role }}</p>
 <hr />
+<p>Omat aiheet</p>
+{% for f in favorites %}
+<a href="/messages/{{ f.topic_id }}">Aihe: {{ f.content }}</a> <br />
+{% endfor %}
+<br/>
+<p>Kaikki aiheet</p>
 {% for t in topics %}
 <a href="/messages/{{ t.id }}">Aihe: {{ t.topic }}</a> <br />
   Luotu: {{ t.created_at.strftime("%Y-%m-%d %H:%M:%S") }} <br />
