@@ -12,9 +12,9 @@ def index():
     topics = result.fetchall()
     return render_template("index.html", topics = topics)
 
-@app.route("/new")
+@app.route("/new_topic")
 def create_topic():
-    return render_template("new.html")
+    return render_template("new_topic.html")
 
 @app.route("/new_message/<string:topic_id>")
 def new_message(topic_id):
@@ -23,7 +23,7 @@ def new_message(topic_id):
 @app.route("/messages/<string:id>")
 def mes(id):
     topic_messages = messages.get_messages(id)
-    return render_template("messages.html", topic_messages=topic_messages, topic_id=id)
+    return render_template("messages.html", topic_messages = topic_messages, topic_id = id)
 
 @app.route("/create_topic", methods=["POST"])
 def create():
@@ -86,6 +86,16 @@ def create_message(topic_id):
         return render_template("messages.html", topic_id=topic_id)
     else:
         return render_template("error.html", message="Viestin lähettäminen epäonnistui. Varmista, että viestikenttä ei ole tyhjä.")
+
+@app.route("/search_messages", methods=["POST"])
+def search():
+    keyword = request.form["content"]
+    messages_found = messages.search_messages(keyword)
+    return render_template("search_results.html", messages_found = messages_found, keyword = keyword)
+
+@app.route("/search")
+def create_search():
+    return render_template("search_messages.html")
     
 
 def user_id():

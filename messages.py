@@ -21,3 +21,9 @@ def get_messages(top_id):
     result = db.session.execute(sql, {"topic_id":top_id})
     topics = result.fetchall()
     return topics
+
+def search_messages(keyword):
+    sql = "SELECT id, content, created_at, topic_id FROM messages WHERE content LIKE :content ORDER BY created_at DESC"
+    result = db.session.execute(sql, {"content":keyword})
+    messages = result.fetchall()
+    return messages
