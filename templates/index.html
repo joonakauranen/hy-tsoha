@@ -6,6 +6,7 @@
 <a href="/messages/{{ t.id }}">Aihe: {{ t.topic }}</a> <br />
   Luotu: {{ t.created_at.strftime("%Y-%m-%d %H:%M:%S") }} <br />
   Alueen Id: {{ t.id }} <br />
+  <a href="/new_favorite/ {{ t.id }} / {{ t.topic }}"> Lisää omiin aiheisiin</a> <br />
   {% endfor %}
   <a href="/logout">Kirjaudu ulos</a>
   <a href="/new_topic">Uusi keskustelu</a>

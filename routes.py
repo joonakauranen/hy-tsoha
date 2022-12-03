@@ -96,7 +96,16 @@ def search():
 @app.route("/search")
 def create_search():
     return render_template("search_messages.html")
-    
+
+@app.route("/new_favorite/<string:topic_id>/<string:topic>")
+def new_favorite(topic_id, topic):
+    return render_template("new_favorite.html", topic_id = topic_id, topic = topic)
+
+@app.route("/create_favorite/<string:topic_id>/<string:topic>",methods=["POST"])
+def create_favorite(topic_id, topic):
+    user = user_id()
+    messages.new_favorite(topic, user, topic_id)
+    return render_template("index.html", topic_id=topic_id)
 
 def user_id():
     return session.get("user_id", 0)

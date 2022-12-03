@@ -27,3 +27,9 @@ def search_messages(keyword):
     result = db.session.execute(sql, {"content":keyword})
     messages = result.fetchall()
     return messages
+
+def new_favorite(content, juser, topic_id):
+    sql = "INSERT INTO favorites (content, juser, topic_id) VALUES (:content, :juser, :topic_id)"
+    db.session.execute(sql, {"content":content, "juser":juser, "topic_id":topic_id})
+    db.session.commit()
+    return True

@@ -21,3 +21,9 @@ CREATE TABLE messages (
     topic_id INTEGER REFERENCES topics
 );
 
+CREATE TABLE favorites (
+    id SERIAL PRIMARY KEY,
+    content TEXT,
+    juser INTEGER REFERENCES users,
+    topic_id INTEGER REFERENCES topics
+);
