@@ -1,3 +1,4 @@
+import secrets
 from app import app
 from flask import redirect, render_template, request, session
 from os import abort
@@ -29,6 +30,8 @@ def mes(id):
 
 @app.route("/create_topic", methods=["POST"])
 def create():
+    token = request.form["csrf_token"]
+    csrf_check(token)
     content = request.form["content"]
     user = user_id()
     if messages.add_topic(content, user):
@@ -54,7 +57,7 @@ def login():
         session["user_id"] = user[1]
         session["user_name"] = username
         session["user_role"] = user[2]
-        #session["csrf_token"] = os.urandom(16).hex()
+        session["csrf_token"] = secrets.token_hex(16)
         return redirect("/")
 
     return redirect("/")
@@ -82,6 +85,8 @@ def register():
 
 @app.route("/create_message/<string:topic_id>",methods=["POST"])
 def create_message(topic_id):
+    token = request.form["csrf_token"]
+    csrf_check(token)
     content = request.form["content"]
     user = user_id()
     topic_messages = messages.new_message(content, user, topic_id)
@@ -90,6 +95,8 @@ def create_message(topic_id):
 
 @app.route("/search_messages", methods=["POST"])
 def search():
+    token = request.form["csrf_token"]
+    csrf_check(token)
     keyword = request.form["content"]
     messages_found = messages.search_messages(keyword)
     return render_template("search_results.html", messages_found = messages_found, keyword = keyword)
@@ -104,6 +111,8 @@ def new_favorite(topic_id, topic):
 
 @app.route("/create_favorite/<string:topic_id>/<string:topic>",methods=["POST"])
 def create_favorite(topic_id, topic):
+    token = request.form["csrf_token"]
+    csrf_check(token)
     user = user_id()
     if messages.new_favorite(topic, user, topic_id):
         return redirect("/")
@@ -121,4 +130,8 @@ def user_role(role):
 
 def require_role(role):
     if role > session.get("user_role", 0):
+        abort(403)
+
+def csrf_check(token):
+    if session["csrf_token"] != token:
         abort(403)
