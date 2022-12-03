@@ -1,4 +1,8 @@
-<p>Tulokset hakusanalla {{ keyword }}</p>
+<!DOCTYPE html>
+<link rel="stylesheet" href="/static/main.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<h2>Tulokset hakusanalla {{ keyword }}</h2>
 {% for m in messages_found %} {{ m.content }} <br />
 {% endfor %}
 <br />

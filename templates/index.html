@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/static/main.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<div class="header">
+  <h2>Keskustelusovellus</h2>
+</div>
+
+<body>
+
 {% if session.user_name %}
 <p>Olet kirjautunut nimellä {{ session.user_name }}</p>
 <p>Rooli (1 = Käyttäjä, 2 = Admin) {{ session.user_role }}</p>
@@ -25,3 +35,5 @@
 
   {% endif %}
 </a>
+
+</body>

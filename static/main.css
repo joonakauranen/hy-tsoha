@@ -1,0 +1,13 @@
+body {
+  margin: auto;
+  max-width: 45em;
+  font-family: "Helvetica", "Arial", sans-serif;
+  background: rgb(255, 195, 195);
+}
+
+.header {
+  background: rgb(157, 214, 150);
+  font-weight: bold;
+  padding: 2em 1em;
+  font-size: 2em;
+}
