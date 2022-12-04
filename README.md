@@ -28,6 +28,20 @@ Kurssimateriaalin mukaisesti lopulliseen applikaatioon on tarkoitus lisätä seu
 
 Puutteita on itse toiminnallisuuden lisäksi tietoturvassa, johon ei juuri ole vielä kiinnitetty erityistä huomiota. Tarkoitus on lisätä käyttöön ainakin CSRF-tokenit.
 
+## Välipalautus 3
+
+Sovellus on viimeistelyä vaille valmis. Toteutettua toiminnallisuutta:
+
+- Käyttäjä voi luoda tilin joka on joko normaali käyttäjä tai admin.
+- Käyttäjä voi kirjautua luodulla käyttäjällä ja salasanalla.
+- Käyttäjä voi luoda uuden ketjun.
+- Käyttäjä voi kirjoittaa uuden viestin olemassa olevaan ketjuun.
+- Käyttäjä voi etsiä kaikki viestit, joiden osana on annettu sana.
+- Käyttäjä voi lisätä aiheen omiin aiheisiinsa.
+- Käyttäjä voi antaa pisteen aiheen luojalle.
+
+Aiempaan verrattuna tässä versiossa virheviestejä on paranneltu, CSRF-tokenit lisätty käyttöön ja ulkoasu luotu CSS:ää käyttäen.
+
 fly.io ei ole käytettävissä, koska pankkitunnuksia vaadittiin. Ohjelmaa voi halutessaan testata kloonamalla sen GitHub-repositorion ja käyttämällä ohjelmaa paikallisesti.
 
 Seuraavalla tavalla voidaan asentaa venv, flask ja tarvittavat riippuvuudet. Kommennot tulee suorittaa kansiossa, johon projekti kloonattiin:
