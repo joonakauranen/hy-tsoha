@@ -134,8 +134,8 @@ def new_point(created_by):
 def create_point(created_by):
     token = request.form["csrf_token"]
     csrf_check(token)
-    if messages.new_point(created_by):
-        return redirect("/")
+    messages.new_point(created_by)
+    return redirect("/")
 
 def user_id():
     return session.get("user_id", 0)
