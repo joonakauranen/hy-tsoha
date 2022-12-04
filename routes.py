@@ -77,6 +77,8 @@ def register():
         user = request.form["username"]
         pas = request.form["password"]
         rol = request.form["role"]
+        if len(user) == 0 or len(pas) == 0 or len(rol) == 0:
+            return render_template("error.html", message="Rekisteröityminen epäonnistui. Varmista, että mikään kentistä ei ole tyhjä")
         hash_value = generate_password_hash(pas)
         sql = "INSERT INTO users (name, password, role) VALUES (:name, :password, :role)"
         db.session.execute(sql, {"name":user, "password":hash_value, "role":rol})
@@ -88,6 +90,8 @@ def create_message(topic_id):
     token = request.form["csrf_token"]
     csrf_check(token)
     content = request.form["content"]
+    if len(content) == 0:
+        return render_template("error.html", message="Viestin lähettäminen epäonnistui. Varmista, että viesti ei ole tyhjä")
     user = user_id()
     topic_messages = messages.new_message(content, user, topic_id)
     return render_template("messages.html", topic_messages=topic_messages, topic_id = topic_id)

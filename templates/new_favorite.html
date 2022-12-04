@@ -3,10 +3,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>Lisää omiin aiheisiin</title>
-<h2>Lisää omiin aiheisiin</h2>
+<h2>Haluatko lisätä aiheen {{ topic }} omiin aiheisiisi?</h2>
 <form action="/create_favorite/{{ topic_id }}/ {{ topic }}" method="POST">
   <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
-  <input type="submit" value="Lähetä" />
+  <input type="submit" value="Lisää aihe" />
 </form>
 <br />
 <a href="/">Etusivulle</a>
