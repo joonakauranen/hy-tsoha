@@ -42,6 +42,8 @@ Sovellus on viimeistelyä vaille valmis. Toteutettua toiminnallisuutta:
 
 Aiempaan verrattuna tässä versiossa virheviestejä on paranneltu, CSRF-tokenit lisätty käyttöön ja ulkoasu luotu CSS:ää käyttäen.
 
+## Käyttöohje
+
 fly.io ei ole käytettävissä, koska pankkitunnuksia vaadittiin. Ohjelmaa voi halutessaan testata kloonamalla sen GitHub-repositorion ja käyttämällä ohjelmaa paikallisesti.
 
 Seuraavalla tavalla voidaan asentaa venv, flask ja tarvittavat riippuvuudet. Kommennot tulee suorittaa kansiossa, johon projekti kloonattiin:
