@@ -14,8 +14,11 @@ def index():
     user = user_id()
     favorites = messages.get_favorites(user)
     points = messages.get_points(user)
-    print(points)
-    return render_template("index.html", topics = topics, favorites = favorites, points = points)
+    if not points:
+        pointss = 0
+    else:
+        pointss = points[0][0]
+    return render_template("index.html", topics = topics, favorites = favorites, pointss = pointss)
 
 @app.route("/new_topic")
 def create_topic():
@@ -120,8 +123,8 @@ def create_favorite(topic_id, topic):
     token = request.form["csrf_token"]
     csrf_check(token)
     user = user_id()
-    if messages.new_favorite(topic, user, topic_id):
-        return redirect("/")
+    messages.new_favorite(topic, user, topic_id)
+    return redirect("/")
 
 @app.route("/new_point/<string:created_by>")
 def new_point(created_by):

@@ -6,7 +6,7 @@
 <h2>Haluatko antaa pisteen aiheen {{ topic }} luojalle?</h2>
 <form action="/create_point/{{ created_by }}" method="POST">
   <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
-  <input type="submit" value="Lisää aihe" />
+  <input type="submit" value="Anna piste" />
 </form>
 <br />
 <a href="/">Etusivulle</a>

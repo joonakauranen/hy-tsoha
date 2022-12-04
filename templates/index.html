@@ -11,7 +11,7 @@
 {% if session.user_name %}
 <p>Olet kirjautunut nimellä {{ session.user_name }}</p>
 <p>Rooli (1 = Käyttäjä, 2 = Admin) {{ session.user_role }}</p>
-<p>Sinulle annetut pisteet: {{  points[0][0]  }}</p>
+<p>Sinulle annetut pisteet: {{  pointss  }}</p>
 <hr />
 <p>Omat aiheet</p>
 {% for f in favorites %}
