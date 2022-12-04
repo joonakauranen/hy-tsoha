@@ -35,8 +35,35 @@ def new_favorite(content, juser, topic_id):
     db.session.commit()
     return True
 
+def new_point(created_by):
+    sql = "SELECT juser, points FROM points WHERE juser=:juser"
+    result = db.session.execute(sql, {"juser":created_by})
+    points = result.fetchall()
+    if len(points) == 0:
+        new_points = 1
+        sql = "INSERT INTO points (juser, points) VALUES (:juser, :points)"
+        db.session.execute(sql, {"juser":created_by, "points":new_points})
+        db.session.commit()
+
+        return True
+    else:
+        current_points = points[0][1]
+        new_points = current_points + 1
+
+    sql = "UPDATE points SET points=:points WHERE juser=:juser"
+    db.session.execute(sql, {"juser":created_by, "points":new_points})
+    db.session.commit()
+
+    return True
+
 def get_favorites(juser):
     sql = "SELECT id, content, juser, topic_id FROM favorites WHERE juser=:juser"
     result = db.session.execute(sql, {"juser":juser})
     favorites = result.fetchall()
     return favorites
+
+def get_points(juser):
+    sql = "SELECT points FROM points WHERE juser=:juser"
+    result = db.session.execute(sql, {"juser":juser})
+    points = result.fetchall()
+    return points

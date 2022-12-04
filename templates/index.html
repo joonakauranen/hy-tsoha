@@ -11,6 +11,7 @@
 {% if session.user_name %}
 <p>Olet kirjautunut nimellä {{ session.user_name }}</p>
 <p>Rooli (1 = Käyttäjä, 2 = Admin) {{ session.user_role }}</p>
+<p>Sinulle annetut pisteet: {{  points[0][0]  }}</p>
 <hr />
 <p>Omat aiheet</p>
 {% for f in favorites %}
@@ -24,6 +25,7 @@
   Luotu: {{ t.created_at.strftime("%Y-%m-%d %H:%M:%S") }} <br />
   Alueen Id: {{ t.id }} <br />
   <a href="/new_favorite/ {{ t.id }} / {{ t.topic }}"> Lisää omiin aiheisiin</a> <br />
+  <a href="/new_point/ {{ t.created_by }}"> Anna piste tekijälle</a> <br />
   {% endfor %}
   <br />
   <a href="/logout">Kirjaudu ulos</a> <br />

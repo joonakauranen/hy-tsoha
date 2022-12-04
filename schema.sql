@@ -27,3 +27,9 @@ CREATE TABLE favorites (
     juser INTEGER REFERENCES users,
     topic_id INTEGER REFERENCES topics
 );
+
+CREATE TABLE points (
+    id SERIAL PRIMARY KEY,
+    juser INTEGER REFERENCES users,
+    points INTEGER
+);

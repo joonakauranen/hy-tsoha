@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/static/main.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Anna piste</title>
+<h2>Haluatko antaa pisteen aiheen {{ topic }} luojalle?</h2>
+<form action="/create_point/{{ created_by }}" method="POST">
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
+  <input type="submit" value="Lisää aihe" />
+</form>
+<br />
+<a href="/">Etusivulle</a>

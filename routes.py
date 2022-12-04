@@ -8,12 +8,14 @@ import messages
 
 @app.route("/")
 def index():
-    sql = "SELECT id, topic, created_at FROM topics ORDER BY id DESC"
+    sql = "SELECT id, topic, created_at, created_by FROM topics ORDER BY id DESC"
     result = db.session.execute(sql)
     topics = result.fetchall()
     user = user_id()
     favorites = messages.get_favorites(user)
-    return render_template("index.html", topics = topics, favorites = favorites)
+    points = messages.get_points(user)
+    print(points)
+    return render_template("index.html", topics = topics, favorites = favorites, points = points)
 
 @app.route("/new_topic")
 def create_topic():
@@ -119,6 +121,17 @@ def create_favorite(topic_id, topic):
     csrf_check(token)
     user = user_id()
     if messages.new_favorite(topic, user, topic_id):
+        return redirect("/")
+
+@app.route("/new_point/<string:created_by>")
+def new_point(created_by):
+    return render_template("new_point.html", created_by = created_by)
+
+@app.route("/create_point/<string:created_by>",methods=["POST"])
+def create_point(created_by):
+    token = request.form["csrf_token"]
+    csrf_check(token)
+    if messages.new_point(created_by):
         return redirect("/")
 
 def user_id():
