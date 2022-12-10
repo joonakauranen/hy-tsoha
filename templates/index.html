@@ -12,6 +12,7 @@
 <p>Olet kirjautunut nimellä {{ session.user_name }}</p>
 <p>Rooli (1 = Käyttäjä, 2 = Admin) {{ session.user_role }}</p>
 <p>Sinulle annetut pisteet: {{  pointss  }}</p>
+<p>Suosituin alue on {{  most_messages[0][0]  }}. Viestejä {{  most_messages[0][1]  }}</p>
 <hr />
 <p>Omat aiheet</p>
 {% for f in favorites %}

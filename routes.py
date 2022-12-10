@@ -14,11 +14,12 @@ def index():
     user = user_id()
     favorites = messages.get_favorites(user)
     points = messages.get_points(user)
+    most_messages = messages.get_most_messages()
     if not points:
         pointss = 0
     else:
         pointss = points[0][0]
-    return render_template("index.html", topics = topics, favorites = favorites, pointss = pointss)
+    return render_template("index.html", topics = topics, favorites = favorites, pointss = pointss, most_messages = most_messages)
 
 @app.route("/new_topic")
 def create_topic():

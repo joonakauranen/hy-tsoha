@@ -66,3 +66,9 @@ def get_points(juser):
     result = db.session.execute(sql, {"juser":juser})
     points = result.fetchall()
     return points
+
+def get_most_messages():
+    sql = "SELECT topic_id, count(*) FROM messages GROUP BY topic_id ORDER BY count(*) DESC LIMIT 1"
+    result = db.session.execute(sql)
+    message = result.fetchall()
+    return message
