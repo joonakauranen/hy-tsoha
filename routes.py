@@ -39,6 +39,8 @@ def create():
     token = request.form["csrf_token"]
     csrf_check(token)
     content = request.form["content"]
+    if len(content) > 50:
+        return render_template("error.html", message="Aiheen luominen epäonnistui. Otsikon pituuden raja on 50 merkkiä")
     user = user_id()
     if messages.add_topic(content, user):
         return redirect("/")
@@ -98,6 +100,8 @@ def create_message(topic_id):
     token = request.form["csrf_token"]
     csrf_check(token)
     content = request.form["content"]
+    if len(content) > 50:
+        return render_template("error.html", message="Viestin lähettäminen epäonnistui. Viestin maksimipituus on 50 merkkiä")
     if len(content) == 0:
         return render_template("error.html", message="Viestin lähettäminen epäonnistui. Varmista, että viesti ei ole tyhjä")
     user = user_id()
