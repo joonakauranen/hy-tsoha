@@ -85,6 +85,8 @@ def register():
         rol = request.form["role"]
         if len(user) == 0 or len(pas) == 0 or len(rol) == 0:
             return render_template("error.html", message="Rekisteröityminen epäonnistui. Varmista, että mikään kentistä ei ole tyhjä")
+        if len(user) > 20 or len(pas) > 20 or len(rol) > 1:
+            return render_template("error.html", message="Rekisteröityminen epäonnistui. Kenttien maksimipituus on 20 merkkiä")
         hash_value = generate_password_hash(pas)
         sql = "INSERT INTO users (name, password, role) VALUES (:name, :password, :role)"
         db.session.execute(sql, {"name":user, "password":hash_value, "role":rol})
